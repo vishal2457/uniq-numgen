@@ -9,8 +9,7 @@ interface NumStringInterface {
   export class NumService {
    private _value: string = "";
     get value() {        
-      const inc = this._num.toString().padStart(this._targetLength, this._pad);
-      return `${this._prefix}${this.seperator}${inc}`;
+      return this.magic(this._num)
     }
     seperator: string = "";
     private _num!: number;
@@ -33,6 +32,12 @@ interface NumStringInterface {
       this._num = this.sanitizedNumber(numberInString, pad);
       this._pad = pad;
     }
+
+
+    private magic(num: number):string {
+      const inc = num.toString().padStart(this._targetLength, this._pad);
+      return `${this._prefix}${this.seperator}${inc}`;
+    }
   
     private sanitizedNumber(value: string, pad: string) {
       const padIsZero = pad === "0";
@@ -53,6 +58,18 @@ interface NumStringInterface {
     decrement() {
         this._num = this._num - 1;
         return this;
+    }
+
+    incrementMultiple(to: number) {
+      const values = [];
+      let num = this._num;
+      let index = 0;
+      while(index <= to) {
+        num++;
+        values.push(this.magic(num));
+        index++
+      }
+      return values
     }
   
   }
