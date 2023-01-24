@@ -1,0 +1,19 @@
+{
+  "name": "proses-numgen",
+  "version": "1.0.1",
+  "description": "Unique incremental number generator",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "npx tsc"
+  },
+  "keywords": [],
+  "files": [
+    "lib"
+  ],
+  "author": "vishal acharya",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^4.9.4"
+  }
+}
